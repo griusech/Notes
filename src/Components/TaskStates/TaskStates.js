@@ -1,12 +1,11 @@
 import React from "react";
-import DeleteIcon from '@material-ui/icons/Delete';
-import DoneAllIcon from '@material-ui/icons/DoneAll';
-import ReplyIcon from '@material-ui/icons/Reply';
-import './TaskStates.css'
+import DeleteIcon from "@material-ui/icons/Delete";
+import DoneAllIcon from "@material-ui/icons/DoneAll";
+import ReplyIcon from "@material-ui/icons/Reply";
+import "./TaskStates.css";
 import { db } from "../../firebase";
 
 const TaskStates = ({ getTasks, tasks, title, statusId }) => {
-
   const changeStatus = async (id, status) => {
     await db.collection("tasks").doc(id).update({
       status: status,
@@ -26,15 +25,12 @@ const TaskStates = ({ getTasks, tasks, title, statusId }) => {
       {tasks.map(
         (task) =>
           task.status === statusId && (
-            <div className="card mb-2 text-left">
-              <div class="card-body">
-                <div key={task.id}>
-                  <h5>
-                    {task.title} 
-                  </h5>
-                  <p>
-                  {task.desc}
-                  </p>
+            <div key={task.id} className="card mb-2 text-left">
+              <div className="card-body">
+                <h5>
+                  {task.title}
+                </h5>
+                <p>{task.desc}</p>
                 <div className="buttons-actions text-right">
                   {task.status === 4 ? (
                     <DeleteIcon
@@ -69,8 +65,6 @@ const TaskStates = ({ getTasks, tasks, title, statusId }) => {
                       </DeleteIcon>
                     </>
                   )}
-                  
-                </div>
                 </div>
               </div>
             </div>

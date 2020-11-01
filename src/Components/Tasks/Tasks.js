@@ -34,6 +34,7 @@ const Tasks = () => {
       <div className="row">
         {status.map((state) => (
           <TaskStates
+            key={state.statusId}
             tasks={tasks}
             title={state.title}
             getTasks={getTasks}

@@ -20,7 +20,7 @@ const TaskForm = ({ getTasks }) => {
     e.preventDefault();
     if(title === '' || desc === '') {
       setError(true)
-      return
+      return;
     }
     setError(false)
 
@@ -43,7 +43,7 @@ const TaskForm = ({ getTasks }) => {
   return (
     
     <div className="m-auto col-md-4">
-      {error ? <div className="mt-4 p-2 bg-danger text-white">NO PUEDE AGREGAR TAREA VACIA</div> : null}
+      {error && <div className="mt-4 p-2 bg-danger text-white">NO PUEDE AGREGAR TAREA VACIA</div>}
       <h5 className="tasks mt-4">Taller Mecánico AutoCity</h5>
       <p className="add-tasks">-- Add Tasks --</p>
       <form onSubmit={handleSubmit}>
