@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./TaskForm.css"
 import { db } from "../../firebase";
 
 const TaskForm = ({ getTasks }) => {
@@ -6,6 +7,8 @@ const TaskForm = ({ getTasks }) => {
   const [task, setTask] = useState({
     status: 1,
   });
+
+  const [ error, setError ] = useState(false);
 
   const addTask = async (taksObject) => {
     await db.collection("tasks").doc().set(taksObject);
@@ -15,7 +18,12 @@ const TaskForm = ({ getTasks }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(task);
+    if(title === '' || desc === '') {
+      setError(true)
+      return
+    }
+    setError(false)
+
     addTask(task);
     getTasks();
     setTask({
@@ -33,7 +41,11 @@ const TaskForm = ({ getTasks }) => {
   };
 
   return (
-    <div className="col-md-5 m-auto">
+    
+    <div className="m-auto col-md-4">
+      {error ? <div className="mt-4 p-2 bg-danger text-white">NO PUEDE AGREGAR TAREA VACIA</div> : null}
+      <h5 className="tasks mt-4">Taller Mecánico AutoCity</h5>
+      <p className="add-tasks">-- Add Tasks --</p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
@@ -43,7 +55,7 @@ const TaskForm = ({ getTasks }) => {
             className="form-control m-2"
             onChange={handeInput}
             value={title}
-          />
+            />
 
           <input
             type="text"
@@ -59,6 +71,7 @@ const TaskForm = ({ getTasks }) => {
         </button>
       </form>
     </div>
+
   );
 };
 

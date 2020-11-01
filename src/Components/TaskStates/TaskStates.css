@@ -1,0 +1,36 @@
+.task-delted.MuiSvgIcon-root {
+  color: red;
+  font-size: 28px;
+}
+
+.done-task.MuiSvgIcon-root {
+  color: green;
+  font-size: 28px;
+}
+
+.reverse-task.MuiSvgIcon-root {
+  color: orange;
+  font-size: 28px;
+}
+
+.task-delted.MuiSvgIcon-root:hover {
+  color: rgb(194, 110, 110);
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.done-task.MuiSvgIcon-root:hover {
+  color: rgb(99, 197, 105);
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.reverse-task.MuiSvgIcon-root:hover {
+  color: rgb(163, 80, 24);
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.MuiSvgIcon-root {
+  margin-left: 1rem;
+}

@@ -1,4 +1,8 @@
 import React from "react";
+import DeleteIcon from '@material-ui/icons/Delete';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import ReplyIcon from '@material-ui/icons/Reply';
+import './TaskStates.css'
 import { db } from "../../firebase";
 
 const TaskStates = ({ getTasks, tasks, title, statusId }) => {
@@ -22,47 +26,51 @@ const TaskStates = ({ getTasks, tasks, title, statusId }) => {
       {tasks.map(
         (task) =>
           task.status === statusId && (
-            console.log(task.status === statusId),
-            <div className="card mb-2">
+            <div className="card mb-2 text-left">
               <div class="card-body">
                 <div key={task.id}>
+                  <h5>
+                    {task.title} 
+                  </h5>
                   <p>
-                    {task.title} - {task.desc}
+                  {task.desc}
                   </p>
-
+                <div className="buttons-actions text-right">
                   {task.status === 4 ? (
-                    <button
+                    <DeleteIcon
                       onClick={() => deleteTask(task.id)}
-                      className="btn btn-danger text-white"
+                      className="task-delted"
                     >
                       Eliminar
-                    </button>
+                    </DeleteIcon>
                   ) : (
                     <>
                       {task.status > 1 && (
-                        <button
+                        <ReplyIcon
                           onClick={() => changeStatus(task.id, task.status - 1)}
-                          className="btn btn-info text-dark"
+                          className="reverse-task"
                         >
                           Anterior
-                        </button>
+                        </ReplyIcon>
                       )}
 
-                      <button
+                      <DoneAllIcon
                         onClick={() => changeStatus(task.id, task.status + 1)}
-                        className="btn btn-warning text-dark"
+                        className="done-task"
                       >
                         Terminada
-                      </button>
+                      </DoneAllIcon>
 
-                      <button
+                      <DeleteIcon
                         onClick={() => deleteTask(task.id)}
-                        className="btn btn-danger text-white"
+                        className="task-delted"
                       >
                         Eliminar
-                      </button>
+                      </DeleteIcon>
                     </>
                   )}
+                  
+                </div>
                 </div>
               </div>
             </div>
