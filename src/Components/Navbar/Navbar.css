@@ -1,0 +1,8 @@
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand > h6 {
+  margin-left: 15px;
+}
