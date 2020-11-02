@@ -28,7 +28,8 @@ const Login = () => {
           alt="todotasks"
         />
         <div className="login__text">
-          <h1>Taller AutoCity</h1>
+          <h2>AutoCity</h2>
+          <h1 className="subtitle">Administrador de Tareas</h1>
         </div>
 
         <button onClick={signIn} className="btn" type="submit">

@@ -26,3 +26,10 @@
   background-color: #63a8a3;
   color: white;
 }
+
+.subtitle {
+  padding-top: 1rem;
+  color: rgb(162, 163, 163);
+  font-weight: bold;
+  font-size: 20px;
+}
